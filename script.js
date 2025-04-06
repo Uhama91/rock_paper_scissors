@@ -13,13 +13,12 @@ const getComputerChoice = () => {
 // user choice
 let choice = prompt("Rock, paper or scissors?");
 
-const getHumanChoice = (choice) => {
+const getHumanChoice = () => {
 
 let computerChoice = getComputerChoice();
 
     switch(choice){
-
-        case choice.toLowerCase==="rock":
+        case "rock":
             if(computerChoice==="rock"){
                 alert("DRAW");
             } else if(computerChoice==="paper"){
@@ -29,7 +28,7 @@ let computerChoice = getComputerChoice();
             }
             break;
 
-        case choice.toLowerCase==="paper":
+        case "paper":
             if(computerChoice==="rock"){
                 alert("You LOOSE!");
             } else if(computerChoice==="paper"){
@@ -39,7 +38,7 @@ let computerChoice = getComputerChoice();
             }
             break;
 
-            case choice.toLowerCase==="scissors":
+            case "scissors":
             if(computerChoice==="rock"){
                 alert("You LOOSE!");
             } else if(computerChoice==="paper"){
@@ -51,3 +50,4 @@ let computerChoice = getComputerChoice();
     }
 }
 
+getHumanChoice();
