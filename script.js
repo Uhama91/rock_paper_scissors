@@ -11,40 +11,40 @@ const getComputerChoice = () => {
 }
 
 // user choice
-let choice = prompt("Rock, paper or scissors?");
+let choicePlayer = prompt("Rock, paper or scissors?");
 
 const getHumanChoice = () => {
 
 let computerChoice = getComputerChoice();
 
-    switch(choice){
+    switch(choicePlayer.toLowerCase){
         case "rock":
             if(computerChoice==="rock"){
-                alert("DRAW");
+                alert("DRAW, no looser no winner");
             } else if(computerChoice==="paper"){
-                alert("You WIN!");
+                alert("You LOSOE! Paper wraps rock...");
             } else{
-                alert("You LOOSE!");
+                alert("You WIN! Rock crashes scissors!");
             }
             break;
 
         case "paper":
             if(computerChoice==="rock"){
-                alert("You LOOSE!");
+                alert("You WIN! Paper wraps rock!");
             } else if(computerChoice==="paper"){
-                alert("DRAW");
+                alert("DRAW, no looser no winner");
             } else{
-                alert("You WIN!");
+                alert("You LOOSE! Scissors cut paper...");
             }
             break;
 
             case "scissors":
             if(computerChoice==="rock"){
-                alert("You LOOSE!");
+                alert("You LOOSE! Rock crashes scissors...");
             } else if(computerChoice==="paper"){
-                alert("You WIN!");
+                alert("You WIN! Scissors cut paper!");
             } else{
-                alert("DRAW");
+                alert("DRAW, no looser no winner");
             }
             break;
     }
