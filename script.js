@@ -2,25 +2,24 @@ const getComputerChoice = () => {
     //randomly decide console rock, paper or scissors
     let randomNumber = Math.floor(Math.random()*3)
     if(randomNumber===0){
-        alert("Computer choose rock");
+        alert("Computer chose rock");
         return "rock";
     }else if(randomNumber===1) {
-        alert("Computer choose paper");
+        alert("Computer chose paper");
         return "paper";
     } else {
-        alert("Computer choose scissors");
+        alert("Computer chose scissors");
         return "scissors"
     }
 }
 
-// user choice
+// Ask what player choose and alert the choice
+const getHumanChoice = () => {
+
+    // user choice
 let playerPrompt = prompt("Rock, paper or scissors?");
 
-// what player choose and alert the choice
-const getHumanChoice = (playerChoice) => {
-    playerChoice = playerPrompt;
-
-    switch(playerChoice){
+    switch(playerPrompt.toLowerCase()){
         case "rock":
             alert("You played rock");
             break;
@@ -33,7 +32,7 @@ const getHumanChoice = (playerChoice) => {
             alert("You played scissors");
             break;
     }
-
+    return playerPrompt.toLowerCase();
 }
 
 let humanScore = 0;
@@ -41,47 +40,45 @@ let computerScore = 0;
 
 //One round of the game nd counts a point
 const playRound =(humanChoice, computerChoice)=>{
-    
-    humanChoice = getHumanChoice();
-    computerChoice = getComputerChoice();
         
     switch(humanChoice){
                 case "rock":
                     if(computerChoice==="rock"){
-                        alert("DRAW, no looser no winner");
+                        alert("DRAW, no loser no winner");
                     } else if(computerChoice==="paper"){
-                        alert("You LOOSE! Paper wraps rock...");
-                        return computerScore += 1;
+                        alert("You LOSE! Paper wraps rock...");
+                        return computerScore++;
                     } else{
                         alert("You WIN! Rock crashes scissors!");
-                        return humanScore += 1;
+                        return humanScore++;
                     }
                     break;
         
                 case "paper":
                     if(computerChoice==="rock"){
                         alert("You WIN! Paper wraps rock!");
-                        return humanScore += 1;
+                        return humanScore++;
                     } else if(computerChoice==="paper"){
                         alert("DRAW, no looser no winner");
                     } else{
                         alert("You LOOSE! Scissors cut paper...");
-                        return computerScore += 1;
+                        return computerScore++;
                     }
                     break;
         
                     case "scissors":
                     if(computerChoice==="rock"){
                         alert("You LOOSE! Rock crashes scissors...");
-                        return computerScore += 1;
+                        return computerScore++;
                     } else if(computerChoice==="paper"){
                         alert("You WIN! Scissors cut paper!");
-                        return humanScore += 1;
+                        return humanScore++;
                     } else{
                         alert("DRAW, no looser no winner");
                     }
                     break;
             }
+            return humanChoice;
 }
 
 const humanSelection = getHumanChoice();
@@ -90,11 +87,11 @@ const computerSelection = getComputerChoice();
     
 //logic of the game
 
-const playGame = (oneParty) => {
+const playGame = () => {
     for(let i=0; i<=5; i++){
-        oneParty = playRound(humanSelection, computerSelection);
+        playRound();
     }
-    return oneParty;
+    return ;
 }
 
 playGame();
