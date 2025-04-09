@@ -44,7 +44,7 @@ const playRound =(humanChoice, computerChoice)=>{
     switch(humanChoice){
                 case "rock":
                     if(computerChoice==="rock"){
-                        alert("DRAW, no loser no winner");
+                        alert("DRAW, no loser no winner"); 
                     } else if(computerChoice==="paper"){
                         alert("You LOSE! Paper wraps rock...");
                         return computerScore++;
@@ -86,24 +86,26 @@ const playRound =(humanChoice, computerChoice)=>{
 
 const playGame = () => {
     
+    let score
     let humanPlayingScore;
     let computerPlayingScore;
     
     for(let i=0; i<=5; i++){
 
         const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+        const computerSelection = getComputerChoice();
         
         playRound(humanSelection, computerSelection);
         
-        humanPlayingScore = humanScore++;
-        computerPlayingScore = computerScore++;
+        humanPlayingScore = humanScore;
+        computerPlayingScore = computerScore;
         
-        let score = (`Score player ${humanPlayingScore} computer ${computerPlayingScore}`)
+        score = (`Score player ${humanPlayingScore} computer ${computerPlayingScore}`)
         
         alert(score);
+        console.log(humanScore, computerScore)
     }
-    return score;
+    return alert(`${score}, end of the game! refresh the page to play a new game!`);
 }
 
-playGame();
+playGame()
