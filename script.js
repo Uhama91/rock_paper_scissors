@@ -81,17 +81,29 @@ const playRound =(humanChoice, computerChoice)=>{
             return humanChoice;
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
     
 //logic of the game
 
 const playGame = () => {
+    
+    let humanPlayingScore;
+    let computerPlayingScore;
+    
     for(let i=0; i<=5; i++){
-        playRound();
+
+        const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+        
+        playRound(humanSelection, computerSelection);
+        
+        humanPlayingScore = humanScore++;
+        computerPlayingScore = computerScore++;
+        
+        let score = (`Score player ${humanPlayingScore} computer ${computerPlayingScore}`)
+        
+        alert(score);
     }
-    return ;
+    return score;
 }
 
 playGame();
