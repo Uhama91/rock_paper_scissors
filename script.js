@@ -1,111 +1,84 @@
+const rockBtn = document.querySelector('#rockBtn');
+const paperBtn = document.querySelector('#paperBtn');
+const scissorsBtn = document.querySelector('#scissorsBtn');
+
+const paraComputer = document.querySelector('#paraComputerChoice');
+const paraPlayer = document.querySelector('#paraPlayerChoice');
+const roundResult = document.querySelector('#roundResult');
+
+const clickRock = rockBtn.addEventListener('click', () => {
+    paraPlayer.textContent = 'You played rock';
+    playRound('rock', getComputerChoice())
+
+});
+const clickPaper = paperBtn.addEventListener('click', () => {
+    paraPlayer.textContent = 'You played paper';
+    playRound('paper', getComputerChoice());
+});
+const clickScissors = scissorsBtn.addEventListener('click', () => {
+    paraPlayer.textContent = 'You played scissors';
+    playRound('scissors', getComputerChoice());
+});
+
+
+
 const getComputerChoice = () => {
     //randomly decide console rock, paper or scissors
     let randomNumber = Math.floor(Math.random()*3)
     if(randomNumber===0){
-        alert("Computer chose rock");
+        paraComputer.textContent = "Computer chose rock";
         return "rock";
     }else if(randomNumber===1) {
-        alert("Computer chose paper");
+        paraComputer.textContent = "Computer chose paper";
         return "paper";
     } else {
-        alert("Computer chose scissors");
+        paraComputer.textContent = "Computer chose scissors";
         return "scissors"
     }
-}
-
-// Ask what player choose and alert the choice
-const getHumanChoice = () => {
-
-    // user choice
-let playerPrompt = prompt("Rock, paper or scissors?");
-
-    switch(playerPrompt.toLowerCase()){
-        case "rock":
-            alert("You played rock");
-            break;
-        
-        case "paper":
-            alert("You played paper");
-            break;
-        
-        case "scissors":
-            alert("You played scissors");
-            break;
-    }
-    return playerPrompt.toLowerCase();
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
-//One round of the game nd counts a point
+//One round of the game counts a point
 const playRound =(humanChoice, computerChoice)=>{
         
     switch(humanChoice){
-                case "rock":
+                case 'rock':
                     if(computerChoice==="rock"){
-                        alert("DRAW, no loser no winner"); 
+                        roundResult.textContent = "DRAW, no loser no winner"; 
                     } else if(computerChoice==="paper"){
-                        alert("You LOSE! Paper wraps rock...");
-                        return computerScore++;
+                        roundResult.textContent = "You LOSE! Paper wraps rock...";
+                        computerScore++;
                     } else{
-                        alert("You WIN! Rock crashes scissors!");
-                        return humanScore++;
+                        roundResult.textContent = "You WIN! Rock crashes scissors!";
+                        humanScore++;
                     }
                     break;
         
-                case "paper":
+                case 'paper':
                     if(computerChoice==="rock"){
-                        alert("You WIN! Paper wraps rock!");
-                        return humanScore++;
+                        roundResult.textContent = "You WIN! Paper wraps rock!";
+                        humanScore++;
                     } else if(computerChoice==="paper"){
-                        alert("DRAW, no looser no winner");
+                        roundResult.textContent = "DRAW, no looser no winner";
                     } else{
-                        alert("You LOOSE! Scissors cut paper...");
-                        return computerScore++;
+                        roundResult.textContent = "You LOOSE! Scissors cut paper...";
+                        computerScore++;
                     }
                     break;
         
-                    case "scissors":
+                    case 'scissors':
                     if(computerChoice==="rock"){
-                        alert("You LOOSE! Rock crashes scissors...");
-                        return computerScore++;
+                        roundResult.textContent = "You LOOSE! Rock crashes scissors...";
+                        computerScore++;
                     } else if(computerChoice==="paper"){
-                        alert("You WIN! Scissors cut paper!");
-                        return humanScore++;
+                        roundResult.textContent = "You WIN! Scissors cut paper!";
+                        humanScore++;
                     } else{
-                        alert("DRAW, no looser no winner");
+                        roundResult.textContent = "DRAW, no looser no winner";
                     }
                     break;
             }
             return humanChoice;
 }
-
-    
-//logic of the game
-
-const playGame = () => {
-    
-    let score
-    let humanPlayingScore;
-    let computerPlayingScore;
-    
-    for(let i=0; i<=5; i++){
-
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        
-        playRound(humanSelection, computerSelection);
-        
-        humanPlayingScore = humanScore;
-        computerPlayingScore = computerScore;
-        
-        score = (`Score player ${humanPlayingScore} computer ${computerPlayingScore}`)
-        
-        alert(score);
-        console.log(humanScore, computerScore)
-    }
-    return alert(`${score}, end of the game! refresh the page to play a new game!`);
-}
-
-playGame()
