@@ -5,22 +5,46 @@ const scissorsBtn = document.querySelector('#scissorsBtn');
 const paraComputer = document.querySelector('#paraComputerChoice');
 const paraPlayer = document.querySelector('#paraPlayerChoice');
 const roundResult = document.querySelector('#roundResult');
+const roundPara = document.querySelector('#round');
+
+let round = 0;
+let humanScore = 0;
+let computerScore = 0;
 
 const clickRock = rockBtn.addEventListener('click', () => {
     paraPlayer.textContent = 'You played rock';
-    playRound('rock', getComputerChoice())
-
+    playRound('rock', getComputerChoice());
+    
+    if(round === 5){
+        return
+        //display result
+    } else {
+        round++
+        roundPara.textContent = `round ${round}`;
+    }
 });
 const clickPaper = paperBtn.addEventListener('click', () => {
     paraPlayer.textContent = 'You played paper';
     playRound('paper', getComputerChoice());
+    
+    if(round === 5){
+        return
+    } else {
+        round++
+        roundPara.textContent = `round ${round}`;
+    }
 });
 const clickScissors = scissorsBtn.addEventListener('click', () => {
     paraPlayer.textContent = 'You played scissors';
     playRound('scissors', getComputerChoice());
+    
+    if(round === 5){
+        return
+    } else {
+        round++
+        roundPara.textContent = `round ${round}`;
+    }
 });
-
-
 
 const getComputerChoice = () => {
     //randomly decide console rock, paper or scissors
@@ -36,9 +60,6 @@ const getComputerChoice = () => {
         return "scissors"
     }
 }
-
-let humanScore = 0;
-let computerScore = 0;
 
 //One round of the game counts a point
 const playRound =(humanChoice, computerChoice)=>{
